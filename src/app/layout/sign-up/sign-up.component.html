@@ -1,0 +1,35 @@
+<!--<div>
+    <h3>Личный кабинет</h3>
+    <h3 *ngIf="storageService.isLogin">Авторизован</h3>
+    <form  [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="login">
+            <div class="login-form">
+                <h3>Логин:</h3>
+                <input formControlName="login" type="text" placeholder="Логин"/><br>
+                <h3>Пароль:</h3>
+                <input formControlName="password"  type="password" placeholder="Пароль"/>
+                <br>
+                <button class="login-button">Войти</button>
+                <p *ngIf="isLoginError">Введен неверный логин или пароль!</p>
+            </div>
+        </div>
+        &lt;!&ndash;<div>
+            <label for="email">Login</label>
+            <input formControlName="email"  required  type="email">
+            <label for="password">Password</label>
+            <input formControlName="password"  type="password">
+        </div>
+        <button>Submit</button>&ndash;&gt;
+    </form>
+</div>-->
+
+<div *ngIf="isLogin; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <app-cabinet [user]="user"></app-cabinet>
+</ng-template>
+<ng-template #elseBlock>
+    <app-login></app-login>
+</ng-template>
+
+

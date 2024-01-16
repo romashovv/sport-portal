@@ -1,0 +1,5 @@
+<h3>Турнирная таблица</h3>
+<app-table
+        [columns]="columns"
+        [rows]="teamsService.teams$ | async"
+></app-table>

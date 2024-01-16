@@ -1,0 +1,23 @@
+<div class="calendar">
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar  [(selected)]="selected" (selectedChange)="change($event)"></mat-calendar>
+    </mat-card>
+    <ng-container *ngIf="isSelectedDate">
+        <div class="match-form">
+            <h3>Заявка на матч</h3>
+            <form  [formGroup]="matchForm">
+                <mat-form-field>
+                    <mat-label>Выберите команду</mat-label>
+                    <mat-select formControlName="team">
+                        <ng-container *ngFor="let team of teamsService.teams$ | async">
+                            <mat-option [value]="team.id">{{team.name}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="!matchForm.valid">Отправить</button>
+            </form>
+        </div>
+    </ng-container>
+
+</div>
+

@@ -1,0 +1,30 @@
+<nav class="navigation">
+    <ul class="navigation__list">
+        <li class="navigation__unit" routerLink="/dashboard">
+            <a class="navigation__unit-link">
+                <span class="navigation__unit-span">Главная</span>
+            </a>
+        </li>
+        <li class="navigation__unit">
+            <a class="navigation__unit-link" routerLink="/league-table">
+                <span class="navigation__unit-span">Таблица</span>
+            </a>
+        </li>
+        <li class="navigation__unit">
+            <a class="navigation__unit-link" routerLink="/calendar">
+                <span class="navigation__unit-span">Календарь</span>
+            </a>
+        </li>
+        <li class="navigation__unit">
+            <a class="navigation__unit-link" routerLink="/sign-up">
+                <span class="navigation__unit-span">Личный кабинет</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="header-line"></div>
+<div class="calendar">
+    <div class="lk" *ngIf="isLogin" (click)="logout()">
+        Выйти
+    </div>
+</div>

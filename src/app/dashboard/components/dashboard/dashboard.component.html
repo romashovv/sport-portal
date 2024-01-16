@@ -1,0 +1,5 @@
+<h3>Последние матчи</h3>
+<app-table
+[columns]="columns"
+[rows]="teamsService.games$ | async"
+></app-table>
