@@ -1,0 +1,41 @@
+<div class="cabinet">
+    <div class="photo">
+        <img src="/assets/images/person.jpg" alt="Фото" height="300px" width="300px">
+    </div>
+    <div class="info">
+
+        <form  [formGroup]="personalForm">
+            <mat-form-field>
+                <mat-label>Фамилия</mat-label>
+                <input matInput type="text" formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Имя</mat-label>
+                <input matInput type="text" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Отчество</mat-label>
+                <input matInput type="text" formControlName="middleName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Команда</mat-label>
+                <input matInput type="text" formControlName="team">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Игр сыграно</mat-label>
+                <input matInput type="text" formControlName="playGames">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Голов забито</mat-label>
+                <input matInput type="text" formControlName="goalScored">
+            </mat-form-field>
+
+        </form>
+    </div>
+    <div class="games">
+        <app-table
+                [columns]="columns"
+                [rows]="games"
+        ></app-table>
+    </div>
+</div>

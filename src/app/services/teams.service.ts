@@ -38,6 +38,10 @@ export class TeamsService {
     });
   }
 
+  postGame(payload: Omit<Game, 'id'>, queryParams?: QueryParams): Observable<Game> {
+    return this.apiService.postGame(payload);
+  }
+
   getPersonGames(personID: number | undefined, queryParams?: QueryParams): Observable<Game[]> {
     if (!personID) return new Observable<Game[]>((q) => {return q});
     return this.apiService.getPerson(personID)
@@ -58,10 +62,6 @@ export class TeamsService {
           )
         }),
       )
-  /*    .subscribe((games: Game[]) => {
-        console.log('games:', games)
-        // this.games.next(items);
-      });*/
   }
 
 

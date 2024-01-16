@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     CabinetComponent,
     CalendarComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,

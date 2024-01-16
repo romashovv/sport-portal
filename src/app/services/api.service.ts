@@ -33,4 +33,8 @@ export class ApiService {
   getPerson(personID: number, queryParams?: QueryParams): Observable<User> {
     return this.http.get<User>(`http://localhost:3000/user/${personID}`, {params: queryParams});
   }
+
+  postGame(payload: Omit<Game, 'id'>): Observable<Game> {
+    return this.http.post<Game>(`http://localhost:3000/games`, payload)
+  }
 }

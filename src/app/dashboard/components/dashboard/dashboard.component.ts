@@ -20,6 +20,6 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.teamsService.getGames({'_sort': 'date', '_order': 'desc'});
+    this.teamsService.getGames({'_sort': 'date', '_order': 'desc', 'matchScore_ne': 'null'});
   }
 }

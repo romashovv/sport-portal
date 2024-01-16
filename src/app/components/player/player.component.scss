@@ -1,0 +1,21 @@
+.cabinet {
+  display: flex;
+}
+
+.photo {
+  img {
+    width:300px;
+    height:300px
+  }
+}
+
+.info {
+  padding-left: 8px;
+  width: 60%;
+}
+
+.games {
+  padding-left:8px;
+  width:100%
+}
+
