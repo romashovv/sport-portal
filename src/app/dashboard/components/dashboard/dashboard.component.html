@@ -1,5 +1,5 @@
 <h3>Последние матчи</h3>
 <app-table
 [columns]="columns"
-[rows]="teamsService.games$ | async"
+[rows]="gamesService.games$ | async"
 ></app-table>

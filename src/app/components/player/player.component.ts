@@ -5,16 +5,19 @@ import { Game } from '../../shared/models/games';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { TeamsService } from '../../services/teams.service';
 import { Team } from '../../shared/models/teams';
+import { QueryMatchService } from './query-match.service';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  styleUrls: ['./player.component.scss'],
+  providers: [QueryMatchService]
 })
 export class PlayerComponent implements OnInit{
   @Input() user: User | undefined;
   public personalForm!: FormGroup;
   public games: Game[] | undefined;
+
   public columns: TableColumn[] = [
     {name: 'Дата', prop: 'date'},
     {name: 'Команда 1', prop: 'teamOne'},
@@ -25,6 +28,7 @@ export class PlayerComponent implements OnInit{
 
   constructor(private formBuilder: FormBuilder,
               public teamsService: TeamsService,
+              public queryMatchService: QueryMatchService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +40,8 @@ export class PlayerComponent implements OnInit{
       playGames: [{ value: this.user?.playGames, disabled: true }],
       goalScored: [{ value: this.user?.goalScored, disabled: true }],
     })
+
+    this.queryMatchService.getRequests();
 
     if (this.user?.team) {
       this.teamsService.getTeam(this.user.team).subscribe((team: Team) => {

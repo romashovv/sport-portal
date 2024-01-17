@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Output() changeTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public checked: boolean = false;
 
   get isLogin() {
     return this.storageService.isLogin;
@@ -20,5 +22,10 @@ export class HeaderComponent {
   logout() {
     this.storageService.deleteUser();
     this.router.navigate(['/'])
+  }
+
+  selectionChangeTheme() {
+    console.log('this.checked', !this.checked)
+    this.changeTheme.emit(!this.checked)
   }
 }

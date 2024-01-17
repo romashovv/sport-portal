@@ -24,7 +24,15 @@
 </nav>
 <div class="header-line"></div>
 <div class="calendar">
-    <div class="lk" *ngIf="isLogin" (click)="logout()">
-        Выйти
-    </div>
+    <ng-container *ngIf="isLogin">
+        <mat-slide-toggle
+                (toggleChange)="selectionChangeTheme()"
+                [(ngModel)]="checked">
+            <span>Сменить тему</span>
+        </mat-slide-toggle>
+        <div class="lk">
+            <span (click)="logout()">Выйти</span>
+        </div>
+    </ng-container>
+
 </div>

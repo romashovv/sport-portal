@@ -1,6 +1,9 @@
+<h3>Календарь</h3>
+<h5>Выберите дату матча, команду и отправить заявку.</h5>
+<hr>
 <div class="calendar">
     <mat-card class="demo-inline-calendar-card">
-        <mat-calendar  [(selected)]="date" (selectedChange)="change($event)"></mat-calendar>
+        <mat-calendar [minDate]="minDate" [(selected)]="date" (selectedChange)="change($event)"></mat-calendar>
     </mat-card>
     <ng-container *ngIf="isSelectedDate">
         <div class="match-form">

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { TeamsService } from '../../../services/teams.service';
+import { Observable } from 'rxjs';
+import { Games } from '../../../shared/models/games';
+import { GamesService } from '../../../services/games.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +19,10 @@ export class DashboardComponent implements OnInit {
   ]
 
   constructor(
-    public teamsService: TeamsService
+    public gamesService: GamesService
   ) {}
 
   ngOnInit(): void {
-    this.teamsService.getGames({'_sort': 'date', '_order': 'desc', 'matchScore_ne': 'null'});
+    this.gamesService.getGames({'_sort': 'date', '_order': 'desc', 'matchScore_ne': 'null'});
   }
 }

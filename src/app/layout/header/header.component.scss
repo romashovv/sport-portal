@@ -46,7 +46,6 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  width: 100%;
   margin: 0 auto;
   min-height: 57px;
   padding-left: 8px;
@@ -55,8 +54,12 @@
 }
 
 div {
-  cursor: pointer;
   flex-grow: 1;
   text-align: end;
   margin-right: 16px;
+}
+
+span {
+  cursor: pointer;
+  color:white;
 }

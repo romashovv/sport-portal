@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 import { QueryParams } from '../shared/models/params';
 import { Game, Games } from '../shared/models/games';
 import { PlayGame, User } from '../shared/models/user';
+import { RequestMatch } from '../shared/models/request';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,6 @@ export class TeamsService {
 
   private team = new BehaviorSubject<Team>({all: 0, draw: 0, id: 0, lose: 0, name: '', rank: 0, win: 0});
   team$ = this.team.asObservable();
-
-  private games = new BehaviorSubject<Games>([]);
-  games$ = this.games.asObservable();
 
   constructor(public apiService: ApiService) {
   }
@@ -32,14 +30,12 @@ export class TeamsService {
     return this.apiService.getTeam(id, queryParams)
   }
 
-  getGames(queryParams?: QueryParams) {
-    return this.apiService.getGames(queryParams).subscribe((items: Games) => {
-      this.games.next(items);
-    });
+  getRequestsMatch(queryParams?: QueryParams): Observable<RequestMatch[]> {
+    return this.apiService.getRequestsMatch(queryParams)
   }
 
-  postGame(payload: Omit<Game, 'id'>, queryParams?: QueryParams): Observable<Game> {
-    return this.apiService.postGame(payload);
+  postRequestMatch(payload: RequestMatch, queryParams?: QueryParams): Observable<RequestMatch> {
+    return this.apiService.postRequestMatch(payload);
   }
 
   getPersonGames(personID: number | undefined, queryParams?: QueryParams): Observable<Game[]> {

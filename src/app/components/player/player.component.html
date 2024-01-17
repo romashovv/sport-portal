@@ -33,9 +33,15 @@
         </form>
     </div>
     <div class="games">
+        <h3 class="mt-0">Последние игры</h3>
         <app-table
                 [columns]="columns"
                 [rows]="games"
+        ></app-table>
+        <h3>Заявки на матч</h3>
+        <app-table
+                [columns]="queryMatchService.columns"
+                [rows]="queryMatchService.requests$ | async"
         ></app-table>
     </div>
 </div>

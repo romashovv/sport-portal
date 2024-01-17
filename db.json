@@ -81,6 +81,56 @@
       "rank": 5
     }
   ],
+  "requests": [
+    {
+      "id": 1,
+      "teamOne": 1,
+      "teamTwo": 2,
+      "date": "02-01-2024"
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 2,
+      "date": "17-01-2024",
+      "id": 2
+    },
+    {
+      "params": {
+        "teamOne": 1
+      },
+      "id": 3
+    },
+    {
+      "params": {
+        "teamOne": 1
+      },
+      "id": 4
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 2,
+      "date": "17-01-2024",
+      "id": 5
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 5,
+      "date": "23-01-2024",
+      "id": 6
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 2,
+      "date": "22-01-2024",
+      "id": 7
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 4,
+      "date": "17-01-2024",
+      "id": 8
+    }
+  ],
   "games": [
     {
       "id": 1,

@@ -5,6 +5,7 @@ import { Team, Teams } from '../shared/models/teams';
 import { QueryParams } from '../shared/models/params';
 import { Game, Games } from '../shared/models/games';
 import { User } from '../shared/models/user';
+import { RequestMatch } from '../shared/models/request';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,11 @@ export class ApiService {
     return this.http.get<User>(`http://localhost:3000/user/${personID}`, {params: queryParams});
   }
 
-  postGame(payload: Omit<Game, 'id'>): Observable<Game> {
-    return this.http.post<Game>(`http://localhost:3000/games`, payload)
+  postRequestMatch(payload: RequestMatch): Observable<RequestMatch> {
+    return this.http.post<RequestMatch>(`http://localhost:3000/requests`, payload)
+  }
+
+  getRequestsMatch(queryParams?: QueryParams): Observable<RequestMatch[]> {
+    return this.http.get<RequestMatch[]>(`http://localhost:3000/requests`, {params: queryParams})
   }
 }

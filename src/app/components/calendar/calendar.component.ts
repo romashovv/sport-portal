@@ -5,6 +5,8 @@ import { filter, map, Observable } from 'rxjs';
 import { Team, Teams } from '../../shared/models/teams';
 import { StorageService } from '../../services/storage.service';
 import { Game } from '../../shared/models/games';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RequestMatch } from '../../shared/models/request';
 
 @Component({
   selector: 'app-calendar',
@@ -21,10 +23,15 @@ export class CalendarComponent implements OnInit {
     return this.storageService.getUser()
   }
 
+  get minDate() {
+    return new Date()
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     public teamsService: TeamsService,
     private storageService: StorageService,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -47,12 +54,14 @@ export class CalendarComponent implements OnInit {
   public send(): void {
     console.log('send', {...this.matchForm.getRawValue(), date: this.date?.toLocaleDateString().replaceAll('.', '-')})
     const formValue = this.matchForm.getRawValue()
-    const payload: Omit<Game, 'id'> = {
-      teamOne: formValue.team,
-      teamTwo: this.user.team,
+    const payload: RequestMatch = {
+      teamOne: this.user.team,
+      teamTwo: formValue.team,
       date: this.date!.toLocaleDateString().replaceAll('.', '-'),
     }
-    this.teamsService.postGame(payload).subscribe()
+    this.teamsService.postRequestMatch(payload).subscribe(() => {
+      this.snackBar.open('Заявка отправлена!', 'Закрыть')
+    })
   }
 
 }
