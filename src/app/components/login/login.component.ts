@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -28,10 +29,11 @@ export class LoginComponent implements OnInit{
   login(){
     this.authService.login()
       .subscribe(res=> {
-        if(res[0].login === this.loginForm.value.login && res[0].password === this.loginForm.value.password){
+        const user = res.find((user: User) => user.login === this.loginForm.value.login)
+        if(user && user.login === this.loginForm.value.login && user.password === this.loginForm.value.password){
           // this.store.dispatch( addUser({user: res[0]}));
           this.loginForm.reset();
-          this.storageService.setUser(res[0])
+          this.storageService.setUser(user)
           this.router.navigate(["dashboard"])
         }else{
           this.isLoginError = true

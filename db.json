@@ -27,6 +27,34 @@
           "goals": 3
         }
       ]
+    },
+    {
+      "id": 2,
+      "login": "demo2",
+      "password": "demo2",
+      "lastName": "Петров",
+      "firstName": "Петр",
+      "middleName": "Петрович",
+      "team": 2,
+      "playGames": 5,
+      "goalScored": 4,
+      "games": [
+        {
+          "id": 1,
+          "gamesId": 1,
+          "goals": 1
+        },
+        {
+          "id": 2,
+          "gamesId": 5,
+          "goals": 4
+        },
+        {
+          "id": 3,
+          "gamesId": 7,
+          "goals": 3
+        }
+      ]
     }
   ],
   "teams": [
@@ -175,6 +203,12 @@
       "teamTwo": 8,
       "date": "18-01-2024",
       "id": 9
+    },
+    {
+      "teamOne": 1,
+      "teamTwo": 2,
+      "date": "18-01-2024",
+      "id": 10
     }
   ],
   "games": [
@@ -209,20 +243,20 @@
     {
       "id": 5,
       "teamOne": "Юг",
-      "teamTwo": "Север",
+      "teamTwo": "Форевер",
       "matchScore": "3-5",
       "date": "02-01-2024"
     },
     {
-      "id": 4,
+      "id": 6,
       "teamOne": "Орион",
       "teamTwo": "Химик",
       "matchScore": "10-2",
       "date": "02-01-2024"
     },
     {
-      "id": 4,
-      "teamOne": "Юпитер",
+      "id": 7,
+      "teamOne": "Форевер",
       "teamTwo": "Юг",
       "matchScore": "0-0",
       "date": "02-01-2024"

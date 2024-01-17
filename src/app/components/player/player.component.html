@@ -35,8 +35,8 @@
     <div class="games">
         <h3 class="mt-0">Последние игры</h3>
         <app-table
-                [columns]="columns"
-                [rows]="games"
+                [columns]="playerGamesService.columns"
+                [rows]="playerGamesService.games$ | async"
         ></app-table>
         <h3>Заявки на матч</h3>
         <app-table

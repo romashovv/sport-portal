@@ -21,7 +21,7 @@ export class QueryMatchService {
   ]
 
   public getRequests() {
-    this.teamsService.getRequestsMatch({'teamTwo': this.storageService.getUser().team})
+    this.teamsService.getRequestsMatch({'teamTwo': this.storageService.getUser().team, '_limit': 3})
       .pipe(
         switchMap((data: RequestMatch[]) => {
           return forkJoin(

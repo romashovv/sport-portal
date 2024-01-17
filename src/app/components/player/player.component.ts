@@ -6,29 +6,22 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 import { TeamsService } from '../../services/teams.service';
 import { Team } from '../../shared/models/teams';
 import { QueryMatchService } from './query-match.service';
+import { PlayerGamesService } from './player-games.service';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
-  providers: [QueryMatchService]
+  providers: [QueryMatchService, PlayerGamesService]
 })
 export class PlayerComponent implements OnInit{
   @Input() user: User | undefined;
   public personalForm!: FormGroup;
-  public games: Game[] | undefined;
-
-  public columns: TableColumn[] = [
-    {name: 'Дата', prop: 'date'},
-    {name: 'Команда 1', prop: 'teamOne'},
-    {name: 'Команда 2', prop: 'teamTwo'},
-    {name: 'Результат матча', prop: 'matchScore', sortable: false},
-    {name: 'Забито голов', prop: 'goals', sortable: false}
-  ]
 
   constructor(private formBuilder: FormBuilder,
               public teamsService: TeamsService,
-              public queryMatchService: QueryMatchService
+              public queryMatchService: QueryMatchService,
+              public playerGamesService: PlayerGamesService
   ) { }
 
   ngOnInit(): void {
@@ -42,15 +35,14 @@ export class PlayerComponent implements OnInit{
     })
 
     this.queryMatchService.getRequests();
+    if (this.user?.id) {
+      this.playerGamesService.getGames(this.user?.id)
+    }
 
     if (this.user?.team) {
       this.teamsService.getTeam(this.user.team).subscribe((team: Team) => {
         this.personalForm.get('team')?.patchValue(team.name);
       });
-    }
-
-    if (this.user?.id) {
-      this.teamsService.getPersonGames(this.user?.id).subscribe((games: Game[]) => this.games = games)
     }
   }
 }
