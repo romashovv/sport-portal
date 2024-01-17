@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component';
 import { LeagueTableComponent } from './components/league-table/league-table.component';
 import { SignUpComponent } from './layout/sign-up/sign-up.component';
 import { CalendarComponent } from './components/calendar/calendar.component';

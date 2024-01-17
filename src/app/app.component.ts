@@ -7,10 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sport-portal';
-  isDarkTheme: boolean = false;
+  isDarkTheme = false;
 
   changeTheme(event: boolean) {
     this.isDarkTheme = event;
-    console.log('is dark theme', this.isDarkTheme)
   }
 }

@@ -35,8 +35,8 @@ export class ApiService {
     return this.http.get<User>(`http://localhost:3000/user/${personID}`, {params: queryParams});
   }
 
-  postRequestMatch(payload: RequestMatch): Observable<RequestMatch> {
-    return this.http.post<RequestMatch>(`http://localhost:3000/requests`, payload)
+  postRequestMatch(payload: RequestMatch, queryParams?: QueryParams): Observable<RequestMatch> {
+    return this.http.post<RequestMatch>(`http://localhost:3000/requests`, payload, {params: queryParams})
   }
 
   getRequestsMatch(queryParams?: QueryParams): Observable<RequestMatch[]> {

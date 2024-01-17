@@ -8,7 +8,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class StorageService {
   constructor(private storage: LocalStorageService) {}
 
-  public get isLogin(): boolean { return this.storage.retrieve('user')};
+  public get isLogin(): boolean { return this.storage.retrieve('user')}
 
   public setUser(user: User) {
     this.storage.store('user', user)

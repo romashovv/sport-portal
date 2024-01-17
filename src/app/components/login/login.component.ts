@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Store } from '@ngrx/store';
 import { StorageService } from '../../services/storage.service';
 
 @Component({
@@ -12,7 +10,7 @@ import { StorageService } from '../../services/storage.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  public isLoginError: boolean = false;
+  public isLoginError = false;
   public loginForm!: FormGroup
 
   constructor(private formBuilder: FormBuilder,
@@ -28,16 +26,17 @@ export class LoginComponent implements OnInit{
     })
   }
   login(){
-    this.authService.login(this.loginForm.value.login, this.loginForm.value.password)
+    this.authService.login()
       .subscribe(res=> {
         if(res[0].login === this.loginForm.value.login && res[0].password === this.loginForm.value.password){
+          // this.store.dispatch( addUser({user: res[0]}));
           this.loginForm.reset();
           this.storageService.setUser(res[0])
           this.router.navigate(["dashboard"])
         }else{
           this.isLoginError = true
         }
-      },err=>{
+      },()=>{
         this.isLoginError = true
       })
   }

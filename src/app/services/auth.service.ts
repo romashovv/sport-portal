@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(login: string, password: string, ): Observable<User[]> {
+  login(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:3000/user');
   }
 }

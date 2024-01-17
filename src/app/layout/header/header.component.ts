@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   @Output() changeTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public checked: boolean = false;
+  public checked = false;
 
   get isLogin() {
     return this.storageService.isLogin;

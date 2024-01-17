@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { TeamsService } from '../../../services/teams.service';
-import { Observable } from 'rxjs';
-import { Games } from '../../../shared/models/games';
 import { GamesService } from '../../../services/games.service';
 
 @Component({

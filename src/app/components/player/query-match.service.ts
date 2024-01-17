@@ -1,12 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { TeamsService } from '../../services/teams.service';
 import { StorageService } from '../../services/storage.service';
-import { Game, Games } from '../../shared/models/games';
-import { BehaviorSubject, forkJoin, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, forkJoin, map, switchMap } from 'rxjs';
 import { Team } from '../../shared/models/teams';
 import { RequestMatch } from '../../shared/models/request';
-import { PlayGame, User } from '../../shared/models/user';
 
 @Injectable()
 export class QueryMatchService {

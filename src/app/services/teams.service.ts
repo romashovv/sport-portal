@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, forkJoin, map, mergeMap, Observable, switchMap, tap, toArray } from 'rxjs';
+import { BehaviorSubject, forkJoin, map, Observable, switchMap } from 'rxjs';
 import { Team, Teams } from '../shared/models/teams';
 import { ApiService } from './api.service';
 import { QueryParams } from '../shared/models/params';
-import { Game, Games } from '../shared/models/games';
+import { Game } from '../shared/models/games';
 import { PlayGame, User } from '../shared/models/user';
 import { RequestMatch } from '../shared/models/request';
 
@@ -35,12 +35,12 @@ export class TeamsService {
   }
 
   postRequestMatch(payload: RequestMatch, queryParams?: QueryParams): Observable<RequestMatch> {
-    return this.apiService.postRequestMatch(payload);
+    return this.apiService.postRequestMatch(payload, queryParams);
   }
 
   getPersonGames(personID: number | undefined, queryParams?: QueryParams): Observable<Game[]> {
     if (!personID) return new Observable<Game[]>((q) => {return q});
-    return this.apiService.getPerson(personID)
+    return this.apiService.getPerson(personID, queryParams)
       .pipe(
         map((resp: User) => {
             return resp.games
@@ -50,7 +50,7 @@ export class TeamsService {
           return forkJoin(
             data.map((playGame:PlayGame) => {
               return this.apiService.getGame(playGame.gamesId).pipe(
-                map((game:Game): any => {
+                map((game:Game): Game => {
                   return {...game, goals: playGame.goals}
                 })
               )

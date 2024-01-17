@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamsService } from '../../services/teams.service';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Team, Teams } from '../../shared/models/teams';
 import { StorageService } from '../../services/storage.service';
-import { Game } from '../../shared/models/games';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RequestMatch } from '../../shared/models/request';
 
@@ -16,7 +15,7 @@ import { RequestMatch } from '../../shared/models/request';
 export class CalendarComponent implements OnInit {
   public matchForm!: FormGroup
   date!: Date | null;
-  isSelectedDate: boolean = false;
+  isSelectedDate = false;
   public teams: Observable<Team[]> | undefined;
 
   get user() {
@@ -47,12 +46,11 @@ export class CalendarComponent implements OnInit {
     );
   }
 
-  change(event: Date | null): void {
+  change(): void {
     this.isSelectedDate = true;
   }
 
   public send(): void {
-    console.log('send', {...this.matchForm.getRawValue(), date: this.date?.toLocaleDateString().replaceAll('.', '-')})
     const formValue = this.matchForm.getRawValue()
     const payload: RequestMatch = {
       teamOne: this.user.team,

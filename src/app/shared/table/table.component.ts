@@ -9,11 +9,8 @@ import { ColumnMode, DatatableComponent, TableColumn } from '@swimlane/ngx-datat
 export class TableComponent {
   @ViewChild(DatatableComponent) table!: DatatableComponent;
 
-  public getRowIndex(row: any): number {
-    return row + 1; // row being data object passed into the template
-  }
-
   @Input() rows: Array<any> | null | undefined;
   @Input() columns:  TableColumn[] = [];
+
   protected readonly ColumnMode = ColumnMode;
 }

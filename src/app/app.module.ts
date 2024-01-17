@@ -22,7 +22,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { PlayerComponent } from './components/player/player.component';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -51,9 +51,10 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatSnackBarModule
-    // StoreModule.forRoot({reducer}),
-    // EffectsModule.forRoot({}),
+    MatSnackBarModule,
+    /*
+    StoreModule.forRoot({reducer}),
+    EffectsModule.forRoot({}),*/
   ],
   providers: [MatDatepickerModule,
     {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},],
