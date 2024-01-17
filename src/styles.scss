@@ -23,12 +23,6 @@ mat-form-field {
   width:100%
 }
 
-/*.dark-theme {
-  .mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input {
-    color: white !important;
-  }
-
-}*/
 $light-app-theme: mat-light-theme((
         color: (
                 primary: mat-palette($mat-indigo),
